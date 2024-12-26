@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Innovative Ideas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1 class="logo">IMS-Connect</h2>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('admin_dashboard') }}">Dashboard</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Admin Dashboard</h1>
+
+        <h2>All Users</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Region</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user['id'] }}</td>
+                    <td>{{ user['name'] }}</td>
+                    <td>{{ user['email'] }}</td>
+                    <td>{{ user['region'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    
+        <h2>All Ideas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Idea ID</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Votes</th>
+                    <th>Posted By</th>
+                    <th>Approved</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for idea in ideas %}
+                <tr>
+                    <td>{{ idea['id'] }}</td>
+                    <td>{{ idea['title'] }}</td>
+                    <td>{{ idea['description'] }}</td>
+                    <td>{{ idea['votes'] }}</td>
+                    <td>{{ idea['user_id'] }}</td>
+                    <td>{{ 'Yes' if idea['approved'] == 1 else 'No' }}</td>
+                    <td>
+                        {% if idea['approved'] == 0 %}
+                        <form action="{{ url_for('change_approval', idea_id=idea['id'], status=1) }}" method="post" style="display:inline;">
+                            <button type="submit">Approve</button>
+                        </form>
+                        {% else %}
+                        <form action="{{ url_for('change_approval', idea_id=idea['id'], status=0) }}" method="post" style="display:inline;">
+                            <button type="submit" style="background-color: #dc3545;">Disapprove</button>
+                        </form>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

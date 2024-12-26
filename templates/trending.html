@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trending Ideas - Innovative Ideas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1 class="logo">IMS-Connect</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('post_idea') }}">Post Idea</a></li>
+                <li><a href="{{ url_for('trending') }}">Trending Ideas</a></li>
+                <li><a href="{{ url_for('profile') }}">Profile</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Trending Ideas</h1>
+        <h2>Top Voted Ideas:</h2>
+        <ul>
+            {% if not ideas %}
+                <p>No featured ideas to display.</p>
+            {% else %}
+                <ul>
+                    {% for idea in ideas %}
+                        <li>
+                            <h3>{{ idea['title'] }}</h3>
+                            <p>{{ idea['description'] }}</p>
+                            <p>Votes: {{ idea['votes'] }}</p>
+                            <form action="{{ url_for('vote', idea_id=idea['id']) }}" method="post">
+                                <button type="submit">Vote</button>
+                            </form>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </ul>
+    </main>
+        
+    <footer>
+        <p>&copy; 2024 Innovation Management System | IMS-Connect</p>
+    </footer>
+</body>
+</html>

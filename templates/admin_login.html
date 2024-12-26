@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Innovative Ideas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Admin Login</h2>
+        <form action="{{ url_for('admin_login') }}" method="POST">
+            <label for="admin_id">Admin ID:</label>
+            <input type="text" id="admin_id" name="admin_id" value="admin" readonly><br><br>
+
+            <label for="admin_password">Password:</label>
+            <input type="password" id="admin_password" name="admin_password" value="admin" readonly><br><br>
+
+            <button type="submit">Login</button>
+        </form>
+        <p>Or, Login as <a href="{{ url_for('login') }}">User</a></p>
+    </div>
+</body>
+</html>

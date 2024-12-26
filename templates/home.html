@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Innovative Ideas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1 class="logo">IMS-Connect</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('post_idea') }}">Post Idea</a></li>
+                <li><a href="{{ url_for('trending') }}">Trending Ideas</a></li>
+                <li><a href="{{ url_for('profile') }}">Profile</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--main>
+        <p>Welcome to the platform where you can share and vote for innovative ideas!</p>
+    </main-->
+
+
+    <div class="hero">
+        <h2>Your Next Big Idea Starts Here</h2>
+    </div>
+
+    <section class="section">
+        <h2>Why Choose Us?</h2>
+        <div class="grid">
+            <div class="grid-item">
+                <img src="{{ url_for('static', filename='images/pic1.JPG') }}" alt="Feature 1">
+                <h3>Share Your Ideas</h3>
+                <p>Easily share your innovative ideas with a community of thinkers and creators.</p>
+            </div>
+            <div class="grid-item">
+                <img src="{{ url_for('static', filename='images/pic2.JPG') }}" alt="Feature 2">
+                <h3>Vote on Ideas</h3>
+                <p>Support the ideas you love by voting and help them trend to the top.</p>
+            </div>
+            <div class="grid-item">
+                <img src="{{ url_for('static', filename='images/pic3.JPG') }}" alt="Feature 3">
+                <h3>Collaborate and Grow</h3>
+                <p>Connect with like-minded individuals and collaborate on groundbreaking concepts.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>How It Works</h2>
+        <div class="grid">
+            <div class="grid-item">
+                <h3>1. Sign Up</h3>
+                <p>Create an account to join our growing community.</p>
+            </div>
+            <div class="grid-item">
+                <h3>2. Post Ideas</h3>
+                <p>Share your thoughts and ideas for others to explore.</p>
+            </div>
+            <div class="grid-item">
+                <h3>3. Vote and Inspire</h3>
+                <p>Vote for your favorite ideas and inspire creativity.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Featured Ideas</h2>
+        <a href="{{ url_for('trending') }}"><button>Check Out! Now!</button></a>
+    </section>
+    
+    <footer>
+        <p>&copy; 2024 Innovation Management System | IMS-Connect</p>
+    </footer>
+</body>
+</html>

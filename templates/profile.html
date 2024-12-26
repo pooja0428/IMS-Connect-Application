@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Innovative Ideas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1 class="logo">IMS-Connect</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('post_idea') }}">Post Idea</a></li>
+                <li><a href="{{ url_for('trending') }}">Trending Ideas</a></li>
+                <li><a href="{{ url_for('profile') }}">Profile</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Your Profile</h1>
+        <h2>{{ user.name }}</h2>
+        <p>Email: {{ user.email }}</p>
+        <h3>Your Ideas:</h3>
+        <ul>
+            {% for idea in user_ideas %}
+            <li>{{ idea.title }} - {{ idea.votes }} votes</li>
+            {% endfor %}
+        </ul>
+    </main>
+
+        
+    <footer>
+        <p>&copy; 2024 Innovation Management System | IMS-Connect</p>
+    </footer>
+</body>
+</html>
